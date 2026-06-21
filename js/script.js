@@ -5,7 +5,7 @@ const scoreEl  = document.getElementById('score');
 
 let score     = 0;
 let scoreTimer = null;
-let pipeSpeed  = 1.8;   // segundos — diminui com o tempo (fica mais rápido)
+let pipeSpeed = 2.8;
 let running    = true;
 
 // ---------- Inicia velocidade do cano ----------
@@ -51,9 +51,10 @@ function checkCollision() {
   const pipeRect  = pipe.getBoundingClientRect();
 
   const hit =
-    marioRect.right  > pipeRect.left  + 10 &&
-    marioRect.left   < pipeRect.right - 10 &&
-    marioRect.bottom > pipeRect.top   + 10;
+    marioRect.right  - 15 > pipeRect.left  &&
+    marioRect.left   + 15 < pipeRect.right &&
+    marioRect.bottom - 10 > pipeRect.top   &&
+    marioRect.top         < pipeRect.bottom;
 
   if (hit) {
     running = false;
@@ -63,6 +64,7 @@ function checkCollision() {
     gameOver.style.display = 'block';
     document.addEventListener('keydown', restart);
     document.addEventListener('touchstart', restart);
+    return; // para o loop
   }
 
   requestAnimationFrame(checkCollision);

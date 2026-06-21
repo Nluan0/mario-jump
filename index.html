@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
-    
-    <title>Mario Jump</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/script.js" defer></script>
+  <title>Mario Jump</title>
 </head>
 <body>
-    <div class="game-board">
-        <img src="./imagens/clouds.png" class="clouds">
-        <img src="./imagens/mario.gif" class="mario">
-        <img src="./imagens/pipe.png" class="pipe">
-        
-
+  <div class="game-board">
+    <div class="score-container">
+      <span class="score-label">PONTOS</span>
+      <span class="score" id="score">0</span>
     </div>
+    <img src="./imagens/clouds.png" class="clouds">
+    <img src="./imagens/mario.gif" class="mario">
+    <img src="./imagens/pipe.png" class="pipe">
+    <img src="./imagens/game-over.png" class="game-over" id="game-over">
+  </div>
 </body>
 </html>

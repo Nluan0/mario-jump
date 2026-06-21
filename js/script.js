@@ -78,7 +78,7 @@ function restart() {
   document.removeEventListener('touchstart', restart);
 
   score     = 0;
-  pipeSpeed = 1.8;
+  pipeSpeed = 2.8;
   running   = true;
   scoreEl.textContent = '0';
 
@@ -87,4 +87,6 @@ function restart() {
   mario.style.animationPlayState = 'running';
   setPipeSpeed();
   startScore();
+
+  requestAnimationFrame(checkCollision); // 👈 reinicia o loop de colisão
 }

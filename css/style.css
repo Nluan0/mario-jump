@@ -1,71 +1,103 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
 }
 
 .game-board {
-    width: 100;
-    height: 500px;
-    border-bottom:15px solid green;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(#87ceeb, #e0f6ff);
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #5DBB63 60%, #5DBB63 63%, #228B22 63%, #228B22 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.pipe {
-    position: absolute;
-    bottom: 0;
-    width: 80px;
-    left: 120px;
-    animation: pipe-animation 1.5s infinite linear;
+/* ---------- SCORE ---------- */
+.score-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
 }
 
-.mario {
-    width: 150px;
-    position: absolute;
-    bottom: 0;
-    left: 50px;
+.score-label {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 2px 2px 0px #000;
+  letter-spacing: 2px;
 }
 
-.jump {
-    animation: jump 500ms ease-out forwards;
+.score {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 28px;
+  color: #FFD700;
+  text-shadow: 3px 3px 0px #000;
+  margin-top: 4px;
 }
 
+/* ---------- CLOUDS ---------- */
 .clouds {
-    position: absolute;
-    width: 550px;
-    animation: clouds-animation 20s infinite linear;
+  position: absolute;
+  top: 5%;
+  width: 350px;
+  animation: clouds 8s linear infinite;
 }
 
-@keyframes pipe-animation {
-    from {
-        left: 800px;
-    }
-    to {
-        left: -80px;
-    }
+@keyframes clouds {
+  from { left: -350px; }
+  to   { left: 110%; }
+}
+
+/* ---------- MARIO ---------- */
+.mario {
+  position: absolute;
+  bottom: 37%;
+  left: 6%;
+  width: 80px;
+  z-index: 5;
+}
+
+.mario.jump {
+  animation: jump 0.6s ease forwards;
 }
 
 @keyframes jump {
-    0% {
-        bottom: 0;
-    }
-    50% {
-        bottom: 150px;
-    }
-    100% {
-        bottom: 0;
-    }
-}
-@keyframes clouds-animation {
-    from {
-        right: -550;
-    }
-
-    to{
-        right: 100;
-    }
+  0%   { bottom: 37%; }
+  40%  { bottom: 57%; }
+  60%  { bottom: 57%; }
+  100% { bottom: 37%; }
 }
 
+/* ---------- PIPE ---------- */
+.pipe {
+  position: absolute;
+  bottom: 37%;
+  right: -80px;
+  width: 70px;
+  z-index: 4;
+  animation: pipe linear infinite;
+}
+
+@keyframes pipe {
+  from { right: -80px; }
+  to   { right: 110%; }
+}
+
+/* ---------- GAME OVER ---------- */
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  display: none;
+  z-index: 20;
+}
